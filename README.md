@@ -33,6 +33,7 @@ As of now, we have several different PHP versions. Use appropriate php version a
 ```shell
 git clone source code from git
 cd docker-compose-lamp/
+cp sample.env .env
 // modify .env as needed
 docker-compose up -d
 // visit localhost

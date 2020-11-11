@@ -46,6 +46,8 @@ RUN pecl install xdebug-2.4.0RC4 && docker-php-ext-enable xdebug \
 RUN a2enmod rewrite headers
 
 RUN a2enmod rewrite rpaf
+RUN a2ensite default-ssl
+RUN a2enmod ssl
 
 EXPOSE 80
 

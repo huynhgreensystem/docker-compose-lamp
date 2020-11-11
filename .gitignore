@@ -1,6 +1,8 @@
 /.env
 /.vscode
 /config/*
+!/config/ssl/*
+!/vhosts/z0app.conf
 /data/*
 /logs/*
 /www/**

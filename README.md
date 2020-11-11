@@ -31,10 +31,9 @@ As of now, we have several different PHP versions. Use appropriate php version a
 * Run the `docker-compose up -d`.
 
 ```shell
-git clone https://github.com/sprintcube/docker-compose-lamp.git
+git clone source code from git
 cd docker-compose-lamp/
-cp sample.env .env
-// modify sample.env as needed
+// modify .env as needed
 docker-compose up -d
 // visit localhost
 ```
@@ -42,6 +41,9 @@ docker-compose up -d
 Your LAMP stack is now ready!! You can access it via `http://localhost`.
 
 ##  Configuration and Usage
+- Go to www folder
+- Git clone the php project (nextversion).
+- Adjust the config database of php project (nextversion).
 
 ### General Information 
 This Docker Stack is build for local development and not for production usage.

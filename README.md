@@ -45,6 +45,7 @@ Your LAMP stack is now ready!! You can access it via `http://localhost`.
 - Go to www folder
 - Git clone the php project (nextversion).
 - Adjust the config database of php project (nextversion).
+- Fix error mysql_mode run this query: set global sql_mode='';
 
 ### General Information 
 This Docker Stack is build for local development and not for production usage.

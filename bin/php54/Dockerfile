@@ -18,6 +18,7 @@ RUN apt-get -y --allow-unauthenticated install --fix-missing apt-utils nano wget
     libmcrypt-dev libsqlite3-dev libsqlite3-0 mysql-client \
     zlib1g-dev libicu-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
     libapache2-mod-rpaf libpng12-dev \
+    libapache2-mod-proxy-html libxml2-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Composer
@@ -44,7 +45,15 @@ RUN pecl install xdebug-2.4.0RC4 && docker-php-ext-enable xdebug \
 
 # Enable apache modules
 RUN a2enmod rewrite headers
-
+RUN a2enmod proxy
+RUN a2enmod proxy_http
+RUN a2enmod proxy_ajp
+RUN a2enmod rewrite
+RUN a2enmod deflate
+RUN a2enmod headers
+RUN a2enmod proxy_balancer
+RUN a2enmod proxy_connect
+RUN a2enmod proxy_html
 RUN a2enmod rewrite rpaf
 RUN a2ensite default-ssl
 RUN a2enmod ssl

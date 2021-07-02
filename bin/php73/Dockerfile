@@ -49,9 +49,21 @@ RUN apt-get -y update && \
     docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
     docker-php-ext-install -j$(nproc) gd
 
+RUN docker-php-ext-configure calendar && docker-php-ext-install calendar
 # Enable apache modules
 RUN a2enmod rewrite headers
 RUN a2ensite default-ssl
+RUN a2enmod proxy
+RUN a2enmod proxy_http
+RUN a2enmod proxy_ajp
+RUN a2enmod rewrite
+RUN a2enmod deflate
+RUN a2enmod headers
+RUN a2enmod proxy_balancer
+RUN a2enmod proxy_connect
+RUN a2enmod proxy_html
+RUN a2ensite default-ssl
 RUN a2enmod ssl
+
 # Cleanup
 RUN rm -rf /usr/src/*

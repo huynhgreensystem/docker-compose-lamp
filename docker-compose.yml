@@ -19,8 +19,8 @@ services:
       - ${LOG_DIR-./logs/apache2}:/var/log/apache2
     environment:
       PMA_PORT: ${HOST_MACHINE_PMA_PORT}
-    networks:
-      - gs-net
+    # networks:
+    #   - gs-net
   database:
     build:
       context: "./bin/${DATABASE}"
@@ -38,8 +38,8 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    networks:
-      - gs-net
+    # networks:
+    #   - gs-net
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: '${COMPOSE_PROJECT_NAME}-phpmyadmin'
@@ -58,13 +58,13 @@ services:
     volumes: 
       - /sessions
       - ${PHP_INI-./config/php/php.ini}:/usr/local/etc/php/conf.d/php-phpmyadmin.ini
-    networks:
-      - gs-net
+    # networks:
+    #   - gs-net
   # redis:
   #   container_name: '${COMPOSE_PROJECT_NAME}-redis'
   #   image: redis:latest
   #   ports:
   #     - "127.0.0.1:${HOST_MACHINE_REDIS_PORT}:6379"
-networks:
-  gs-net:
-    external: true
+# networks:
+#   gs-net:
+#     external: true

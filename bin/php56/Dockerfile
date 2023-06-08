@@ -7,6 +7,8 @@ RUN apt-get -y install --fix-missing apt-utils nano wget dialog \
     build-essential git curl libcurl3 libcurl3-dev zip \
     libmcrypt-dev libsqlite3-dev libsqlite3-0 mysql-client \
     zlib1g-dev libicu-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
+    libapache2-mod-rpaf\
+    libxml2-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Composer
@@ -19,6 +21,7 @@ RUN docker-php-ext-install curl \
     && docker-php-ext-install mcrypt \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install pdo_sqlite \
+    && docker-php-ext-install mysql \
     && docker-php-ext-install mysqli \
     && docker-php-ext-install zip \
     && docker-php-ext-install -j$(nproc) intl \
@@ -30,6 +33,19 @@ RUN docker-php-ext-install curl \
 
 # Enable apache modules
 RUN a2enmod rewrite headers
+RUN a2enmod proxy
+RUN a2enmod proxy_http
+RUN a2enmod proxy_ajp
+RUN a2enmod rewrite
+RUN a2enmod deflate
+RUN a2enmod headers
+RUN a2enmod proxy_balancer
+RUN a2enmod proxy_connect
+RUN a2enmod proxy_html
+RUN a2enmod rewrite rpaf
+RUN a2ensite default-ssl
+RUN a2enmod ssl
+RUN a2enmod vhost_alias
 
 EXPOSE 80
 
